@@ -5,7 +5,7 @@
 # chkconfig: - 84 16
 # description: spring boot project
 
-SERVICE_NAME=myapp
+SERVICE_NAME=__artifactId__
 ACTIVE_PROFILE=__ACTIVE_PROFILE__
 
 SERVICE_DIR=/opt/$SERVICE_NAME
