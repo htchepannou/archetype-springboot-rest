@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import tchepannou.archetypes.springboot.dto.GreetingDto;
 import tchepannou.archetypes.springboot.service.GreetingService;
 
 import java.util.concurrent.atomic.AtomicLong;
@@ -26,8 +25,6 @@ public class GreetingController {
     //-- REST methods
     @RequestMapping(method = RequestMethod.GET)
     @ApiOperation("Sample Method")
-    public GreetingDto greeting(@RequestParam(value="name", defaultValue="World") String name) {
-        final String word = greetingService.say(name);
-        return new GreetingDto(counter.incrementAndGet(), word);
+    public void greeting(@RequestParam(value="name", defaultValue="World") String name) {
     }
 }

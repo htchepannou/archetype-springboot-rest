@@ -11,15 +11,15 @@ import org.springframework.boot.test.WebIntegrationTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import tchepannou.archetypes.springboot.Starter;
 
-import static com.jayway.restassured.RestAssured.given;
+import static com.jayway.restassured.RestAssured.when;
 import static org.hamcrest.CoreMatchers.is;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Starter.class)
 @WebIntegrationTest
-public class GreetingControllerIT {
-    @Value("${server.port}")
-    int port;
+public class HealthCheckIT {
+    @Value ("${server.port}")
+    private int port;
 
     @Before
     public void setUp (){
@@ -27,17 +27,16 @@ public class GreetingControllerIT {
     }
 
     @Test
-    public void testGet (){
+    public void test_status (){
+
         // @formatter:off
-        given ()
-            .param("name", "hello")
-        .when()
-            .get("/api/greeting")
+        when()
+            .get("/health")
         .then()
             .statusCode(HttpStatus.SC_OK)
             .log()
                 .all()
-            .body("content", is("hello"))
+            .body("status", is("UP"))
         ;
         // @formatter:on
     }

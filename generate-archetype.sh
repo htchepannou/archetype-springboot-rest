@@ -12,6 +12,7 @@ rm -Rf src/main/resources/archetype-resources/log
 
 cp ../../../.gitignore src/main/resources/archetype-resources
 cp ../../../README-archetype.md src/main/resources/archetype-resources/README.md
+
 mvn install
 
 cd ../../..
