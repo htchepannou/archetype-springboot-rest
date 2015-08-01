@@ -1,6 +1,6 @@
  #!/bin/sh
 
-mvn clean install archetype:create-from-project
+mvn clean install archetype:create-from-project -Dserver.port=8081
 
 cd target/generated-sources/archetype
 
