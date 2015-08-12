@@ -1,13 +1,14 @@
-Archetype for springboot RESTfull microservice.
+# Prerequises
+- Java 8+
+- Maven 3.x+
 
-## Features
-- Spring Security
-- CORS Integration
-- Integration with [Codehale Metrics](https://dropwizard.github.io/metrics)
-- Swagger API documentation
-- Unit + Integration test
-- Generation of Code Coverage reports (Jacoco)
+## How to Build
+- From your IDE: just build your project
+- From command line: ``mvn clean install``
 
-## How to generate the archetype
-- Update the version in ``pom.xml``
-- Run the script ``generate-archetype.sh``
+## How to Run
+- From IDE: Right click on the class ``Starter`` at the root of your project package and run it.
+You can customize it with the following springboot profiles:
+  - ``spring.profiles.active``: values are ``dev``, ``ci``, ``test``, ``stress`` or ``prod``
+  - See [here](http://docs.spring.io/spring-boot/docs/current/reference/html/howto-properties-and-configuration.html) for more configuration parameters.
+- Using Maven: ``mvn spring-boot:run``
