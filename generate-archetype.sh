@@ -1,17 +1,23 @@
  #!/bin/sh
 
+# generate archetype
 mvn clean install archetype:create-from-project -Dserver.port=8081
 
 cd target/generated-sources/archetype
 
-rm src/main/resources/archetype-resources/generate-archetype.sh
-rm src/main/resources/archetype-resources/*.iml
-rm src/main/resources/archetype-resources/*.md
-rm -Rf src/main/resources/archetype-resources/.idea
-rm -Rf src/main/resources/archetype-resources/log
+# cleanup archetype
+JAR_NAME=springboot-rest-archetype-1.0
+JAR_PATH=target/$JAR_NAME.jar
+zip -d $JAR_PATH archetype-resources/*.iml
+zip -d $JAR_PATH archetype-resources/*.sh
+zip -d $JAR_PATH archetype-resources/log/*
+zip -d $JAR_PATH archetype-resources/.idea/*
 
-cp ../../../.gitignore src/main/resources/archetype-resources
+# add .gitignore
+mkdir archetype-resources
+cp ../../../.gitignore archetype-resources/.
+zip -g $JAR_PATH archetype-resources/.gitignore
 
-#mvn install
+mvn install
 
 cd ../../..
